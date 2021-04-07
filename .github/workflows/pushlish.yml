@@ -14,7 +14,7 @@ jobs:
       run: docker build . -- tag my-image-name:$(data +%s)
 
     - name: Publish to Registry
-      uses: dextroxic/Publish-Docker-Github-Actions@main
+      uses: dextroxic/Publish-Docker-Github-Actions@master
       with:
         name: dextroxic/go-github-actions
         username: ${{ secrets.DOCKER_USERNAME}}
