@@ -16,18 +16,3 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: dextroxic/go-actions
           tag_with_ref: true
-    
-    ## Builds our docker image!
-    # - name: Build the Docker image
-    #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-
-    # ## Publishes our image to Docker Hub 😎
-    # - name: Publish to Registry
-    #   uses: dextroxic/Publish-Docker-Github-Action@main
-    #   with:
-    #     ## the name of our image
-    #     name: dextroxic/go-actions
-    #     ## Here we pass in our Docker Username
-    #     username: ${{ secrets.DOCKER_USERNAME }}
-    #     ## and our Docker password which 
-    #     password: ${{ secrets.DOCKER_PASSWORD }}
