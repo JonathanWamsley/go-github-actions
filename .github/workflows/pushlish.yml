@@ -1,21 +1,27 @@
 name: Build and Publish Docker Image
 
 on:
-  Push:
-    branches:
-      - main
+  push:
+    branches: [ main ]
 
 jobs:
-  build-and-public:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
+    ## checks out our project source code
     - uses: actions/checkout@v2
-    - name: Build Docker Image
-      run: docker build . -- tag my-image-name:$(data +%s)
+    
+    ## Builds our docker image!
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 
+    ## Publishes our image to Docker Hub 😎
     - name: Publish to Registry
-      uses: dextroxic/Publish-Docker-Github-Actions@master
+      uses: dextroxic/Publish-Docker-Github-Action@master
       with:
-        name: dextroxic/go-github-actions
-        username: ${{ secrets.DOCKER_USERNAME}}
-        password: ${{ secrets.DOCKER_PASSWORD}}
+        ## the name of our image
+        name: dextroxic/go-actions
+        ## Here we pass in our Docker Username
+        username: ${{ secrets.DOCKER_USERNAME }}
+        ## and our Docker password which 
+        password: ${{ secrets.DOCKER_PASSWORD }}
